@@ -1,13 +1,11 @@
 {
-  "name": "telegram-miniapp",
+  "name": "tok-miniapp",
   "version": "1.0.0",
-  "description": "Telegram Mini App - TOK Balance",
-  "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node backend/app.js",
+    "install:backend": "cd backend && npm install"
   },
-  "dependencies": {
-    "express": "^4.18.2",
-    "sql.js": "^1.10.0"
+  "engines": {
+    "node": ">=18"
   }
 }
