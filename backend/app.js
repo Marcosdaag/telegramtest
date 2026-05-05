@@ -16,7 +16,7 @@ const CONFIG = {
   BOT_TOKEN: process.env.BOT_TOKEN || '',
   BOT_USERNAME: process.env.BOT_USERNAME || 'tokfarmbot',
   BOT_SHORTNAME: process.env.BOT_SHORTNAME || 'login',
-  DB_PATH: path.join(__dirname, 'miniapp.db'),
+  DB_PATH: process.env.DB_PATH || path.join(__dirname, 'miniapp.db'),
   BONUS_AMOUNT: parseFloat(process.env.BONUS_AMOUNT) || 5,
   BONUS_COOLDOWN_MS: (parseInt(process.env.BONUS_COOLDOWN_MINUTES) || 60) * 60 * 1000,
   REFERRAL_BONUS: parseFloat(process.env.REFERRAL_BONUS) || 10,

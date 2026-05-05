@@ -399,15 +399,15 @@ function toast(msg) {
 // ============ Monetag Ads ============
 function initAds() {
   if (typeof show_10964943 !== 'function') return;
-  // In-App Interstitial on all views
+  // In-App Interstitial — menos invasivo
   try {
     show_10964943({
       type: 'inApp',
       inAppSettings: {
-        frequency: 2,
-        capping: 0.1,
-        interval: 30,
-        timeout: 5,
+        frequency: 1,
+        capping: 0.5,
+        interval: 120,
+        timeout: 15,
         everyPage: false
       }
     });
