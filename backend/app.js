@@ -15,6 +15,7 @@ const CONFIG = {
   APP_URL: process.env.APP_URL || 'http://localhost:3000',
   BOT_TOKEN: process.env.BOT_TOKEN || '',
   BOT_USERNAME: process.env.BOT_USERNAME || 'tokfarmbot',
+  BOT_SHORTNAME: process.env.BOT_SHORTNAME || 'login',
   DB_PATH: path.join(__dirname, 'miniapp.db'),
   BONUS_AMOUNT: parseFloat(process.env.BONUS_AMOUNT) || 5,
   BONUS_COOLDOWN_MS: (parseInt(process.env.BONUS_COOLDOWN_MINUTES) || 60) * 60 * 1000,
@@ -128,7 +129,7 @@ app.post('/api/profile', (req, res) => {
     const refs = queryOne('SELECT COUNT(*) as count FROM users WHERE referred_by = ?', [u.telegram_id]);
     res.json({
       ...fresh,
-      referral_link: `https://t.me/${CONFIG.BOT_USERNAME}?start=${fresh.referral_code}`,
+      referral_link: `https://t.me/${CONFIG.BOT_USERNAME}/${CONFIG.BOT_SHORTNAME}?startapp=${fresh.referral_code}`,
       referral_count: refs.count,
     });
   } catch (e) {
