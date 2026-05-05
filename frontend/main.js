@@ -61,6 +61,7 @@ async function init() {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('app').style.display = 'block';
     renderAll();
+    initAds();
   } catch (e) {
     document.getElementById('loading').innerHTML =
       '<div class="load-icon">❌</div><div class="load-text">Error de conexión</div>';
@@ -188,6 +189,18 @@ function updateFarm() {
 async function claimBonus() {
   const btn = document.getElementById('farmBtn');
   if (!btn || btn.classList.contains('btn-disabled')) return;
+
+  // Show rewarded ad before claiming
+  btn.textContent = '📺 Viendo anuncio...';
+  btn.className = 'btn btn-disabled';
+
+  try {
+    if (typeof show_10964943 === 'function') {
+      await show_10964943();
+    }
+  } catch (e) {
+    // Ad failed/skipped, still allow claim
+  }
 
   const emoji = document.getElementById('farmEmoji');
   if (emoji) {
@@ -381,6 +394,24 @@ function toast(msg) {
     t.classList.remove('show');
     toastTimeout = null;
   }, 2500);
+}
+
+// ============ Monetag Ads ============
+function initAds() {
+  if (typeof show_10964943 !== 'function') return;
+  // In-App Interstitial on all views
+  try {
+    show_10964943({
+      type: 'inApp',
+      inAppSettings: {
+        frequency: 2,
+        capping: 0.1,
+        interval: 30,
+        timeout: 5,
+        everyPage: false
+      }
+    });
+  } catch (e) { /* ad blocker or load error */ }
 }
 
 // ============ Start ============
