@@ -26,6 +26,24 @@
   --nav-height: 68px;
 }
 
+/* Dark mode fallback (when outside Telegram) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tg-theme]) {
+    --bg: var(--tg-theme-bg-color, #1a1a2e);
+    --bg2: var(--tg-theme-secondary-bg-color, #25253e);
+    --text: var(--tg-theme-text-color, #e8e8f0);
+    --text2: var(--tg-theme-hint-color, #8888aa);
+    --link: var(--tg-theme-link-color, #f4845f);
+    --btn: var(--tg-theme-button-color, #e8734a);
+    --btn-text: var(--tg-theme-button-text-color, #ffffff);
+    --orange: #f4845f;
+    --coral: #f59e7a;
+    --peach: #5c3d2e;
+    --mint: #5ab88f;
+    --purple: #b99de6;
+  }
+}
+
 body {
   font-family: 'Nunito', sans-serif;
   background: var(--bg);

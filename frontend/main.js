@@ -4,6 +4,7 @@ if (tg) {
   tg.ready();
   tg.expand();
   tg.setHeaderColor('secondary_bg_color');
+  document.documentElement.setAttribute('data-tg-theme', 'true');
 }
 
 let U = null;   // current user
